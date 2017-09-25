@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of the Coreb2c project.
  *
@@ -19,7 +18,6 @@ use yii\helpers\ArrayHelper;
  * @var yii\widgets\ActiveForm $form
  * @var coreb2c\user\models\Profile $model
  */
-
 $this->title = Yii::t('user', 'Profile settings');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -36,17 +34,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::encode($this->title) ?>
             </div>
             <div class="panel-body">
-                <?php $form = ActiveForm::begin([
-                    'id' => 'profile-form',
-                    'options' => ['class' => 'form-horizontal'],
-                    'fieldConfig' => [
-                        'template' => "{label}\n<div class=\"col-lg-9\">{input}</div>\n<div class=\"col-sm-offset-3 col-lg-9\">{error}\n{hint}</div>",
-                        'labelOptions' => ['class' => 'col-lg-3 control-label'],
-                    ],
-                    'enableAjaxValidation' => true,
-                    'enableClientValidation' => false,
-                    'validateOnBlur' => false,
-                ]); ?>
+                <?php
+                $form = ActiveForm::begin([
+                            'id' => 'profile-form',
+                            'options' => ['class' => 'form-horizontal'],
+                            'fieldConfig' => [
+                                'template' => "{label}\n<div class=\"col-lg-9\">{input}</div>\n<div class=\"col-sm-offset-3 col-lg-9\">{error}\n{hint}</div>",
+                                'labelOptions' => ['class' => 'col-lg-3 control-label'],
+                            ],
+                            'enableAjaxValidation' => true,
+                            'enableClientValidation' => false,
+                            'validateOnBlur' => false,
+                ]);
+                ?>
 
                 <?= $form->field($model, 'name') ?>
 
@@ -56,19 +56,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'location') ?>
 
-                <?= $form
-                    ->field($model, 'timezone')
-                    ->dropDownList(
-                        ArrayHelper::map(
-                            Timezone::getAll(),
-                            'timezone',
-                            'name'
-                        )
-                    ); ?>
+                <?=
+                        $form
+                        ->field($model, 'timezone')
+                        ->dropDownList(
+                                ArrayHelper::map(
+                                        Timezone::getAll(), 'timezone', 'name'
+                                )
+                );
+                ?>
 
-                <?= $form
-                    ->field($model, 'gravatar_email')
-                    ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
+                <?=
+                        $form
+                        ->field($model, 'gravatar_email')
+                        ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com'))
+                ?>
 
                 <?= $form->field($model, 'bio')->textarea() ?>
 
