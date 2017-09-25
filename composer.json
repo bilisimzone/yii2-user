@@ -6,7 +6,6 @@
     "license": "MIT",
     "support": {
         "issues": "https://github.com/coreb2c/yii2-user/issues?state=open",
-        "forum": "https://gitter.im/coreb2c/yii2-user",
         "source": "https://github.com/coreb2c/yii2-user"
     },
     "authors": [
